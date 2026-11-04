@@ -4,11 +4,35 @@ This documentation specifies device behavior for a future local serial library.
 It does not describe a completed or hardware-validated implementation. The scope
 is DXS500 AC dielectric withstand testing and insulation-resistance measurement.
 
+## Reading order
+
+1. [Device scope, sources, and verification register](device/README.md)
+2. [Safety and recovery](device/safety-and-recovery.md)
+3. [Serial communication](device/serial-communication.md)
+4. [Commands](device/commands.md) and [status and errors](device/status-and-errors.md)
+5. [AC Hipot](device/hipot.md) and [insulation resistance](device/insulation-resistance.md)
+6. [Deployment compatibility](deployment/README.md)
+
+Use the [glossary](../GLOSSARY.md) for domain terminology. The documents specify
+device contracts, not a public API, software architecture, CLI, or packaging
+implementation. Other instruments and network transport are outside the target.
+
 ## Evidence conventions
 
 The primary source is SEFELEC, *Operating manual XS SERIES - English*,
 reference PENT0438, revision v0.55. References must use printed page numbers;
 PDF page indexes must be identified separately.
+
+Each device document uses **[M p. N]** or **[M pp. N-M]** for that same source.
+In the supplied 156-page PDF, one-based PDF page index equals printed page
+number plus one; the cover is PDF page 1. References identify evidence rather
+than reproducing the manual. The manufacturer PDF is not distributed here.
+
+**Manufacturer:** a statement supported by M. **Requirement:** a project
+constraint for the future implementation, not a manufacturer guarantee.
+**Observation:** limited evidence from an identified inspection.
+**Unverified:** missing or contradictory evidence, tracked as V1-V10 in the
+[verification register](device/README.md#verification-register).
 
 Distinguish manufacturer-specified behavior, observed runtime constraints, and
 unverified behavior. Supplementary summaries and previous implementations are
@@ -55,3 +79,16 @@ Automatic restoration of its previous contents is not promised.
 Where command availability, parameter units, or a disabling value remain
 unverified, the affected configuration step remains blocked under the evidence
 conventions above.
+
+## Completion and limitations
+
+This specification captures the available source evidence, including gaps; it
+does not certify the instrument, test installation, or future software. No
+serial sessions or measurements were performed for this documentation. Earlier
+passive runtime observations are isolated in the deployment document. Existing
+application logs are not treated as raw serial evidence.
+
+Source traceability, DXS500 applicability, consistency, local links, and
+publication sanitization are the documentation checks. Hardware validation,
+option discovery, exact response framing, and resolution of manufacturer
+contradictions remain separate work.
