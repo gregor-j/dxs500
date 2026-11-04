@@ -13,7 +13,7 @@ v0.55; printed pages. This is the DXS500 insulation function, not DC Hipot.
 | Standard upper range | `(test voltage / 500 V) * 200 Gohm` | Not a fixed 200 Gohm at every voltage |
 | Standard range examples | 50 V: 50 kohm-20 Gohm; 100 V: 100 kohm-40 Gohm; 250 V: 250 kohm-100 Gohm; 500 V: 500 kohm-200 Gohm | Do not extrapolate undocumented lower-range behavior |
 | Standard accuracy | +/- (1.5% of reading + 1 digit); 2,000-digit display | No universal fixed ohm resolution across ranges specified |
-| Thresholds | Specification: 50 kohm-200 Gohm; setup: 0-200 Gohm (V5) | `LLIM`/`HLIM` NR3, in ohms |
+| Thresholds | Standard specification: 50 kohm-200 Gohm; XS-20 extends the ceiling to 2 Tohm. Setup gives a 0 kohm minimum instead (V5). | `LLIM`/`HLIM` NR3, in ohms |
 | Hold | 0 for continuous measurement; otherwise 1-999 s, 1 s steps | `HTIM <NR1>` seconds |
 | Rise/fall | Locally 0.1-0.9 s, 1-999 s, or 1-500 V/s | `RTIM`/`FTIM` integer time arguments; fractional and V/s syntax unresolved (V6) |
 
@@ -33,9 +33,11 @@ options that M does not specify. [M pp. 22, 35, 50]
 
 With both thresholds active, PASS requires resistance strictly greater than
 low and less than high. High must exceed low. In the basic version, setting
-high to 200 Gohm disables the upper comparison; this is a disabling setting,
-not proof that 200 Gohm is measurable at every voltage. Do not assume zero
-disables the low comparison: its documented minimum conflicts (V5).
+high to 200 Gohm disables the upper comparison; M describes selecting the
+maximum resistance to disable that comparison, with a 2 Tohm maximum for
+XS-20. These are threshold settings, not proof that the maximum is measurable
+at every voltage. Do not assume zero disables the low comparison: its
+documented minimum conflicts (V5).
 [M pp. 23, 50-51]
 
 `FILT NOR` selects normal operation; `CAP` stabilizes capacitive insulation
